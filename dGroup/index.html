@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" style="background: #F0F0F0">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=10">
+		<title>企业项目经费管理系统</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+
+
+		</div>
+		<div class="login-wrap">
+			<div class="login-title">登录信息</div>
+			<form class="login-form">
+				<ul>
+					<li><input id="name" type="text" placeholder="用户名"></li>
+					<li><input id="password" type="password" placeholder="密码"></li>
+					<li><button type="button" id="login">确定</button></li>
+				</ul>
+			</form>
+		</div>
+
+		<script type="text/javascript" src="js/jquery.1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+		<script type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
+		<script>
+			var login = {
+				admin: 123456
+			}
+
+			var admin = ['admin']
+			var normal = ['']
+			$("#login").click(function() {
+				if(login[$("#name").val()] == $("#password").val()) {
+					window.location.href = "fileDeal.html?nowuser="+encodeURI($("#name").val());
+				}
+			})
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="js/bootstrap-3.3.7-dist/css/bootstrap.css" />
+
+	</head>
+
+	<body style="padding: 100px;">
+		<form class="form-inline" style="margin: 10px;">
+			<div class="form-group">
+				<label for="keyword" class="sr-only">地址查詢</label>
+				<input class="form-control" id="keyword" placeholder="地址查詢">
+			</div>
+			<button type="button" id="keywordButton" class="btn btn-default">地址查詢</button>
+		</form>
+		<table class="table table-hover table-striped">
+			<thead>
+				<th>序号</th>
+				<th>名称</th>
+				<th>大小</th>
+				<th>变更时间</th>
+				<th>操作</th>
+			</thead>
+			<tr id="nodata">
+				<td colspan="5" style="font-size: 20px;text-align: center;">暫無數據，請查詢</td>
+			</tr>
+		</table>
+	</body>
+	<script>
+		var baseUrl = 'http://127.0.0.1:8081'
+		$("#keywordButton").click(function() {
+			$.ajax({
+				url: baseUrl + '/dGroup/fileDeal/getList',
+				data: { basePath: $("#keyword").val() },
+				type: "post",
+				dataType: "text",
+				success: function(data) {
+					var j = JSON.parse(data);
+					var html = '';
+					count = 1;
+					for(i in j) {
+						html += '<tr><td>' + count + '</td>'
+						html += '<td>' + j[i].fileName + '</td>'
+						html += '<td>' + j[i].size + '</td>'
+						html += '<td>' + j[i].createTime + '</td>'
+						html += '<td>' + j[i].createTime + '</td></tr>'
+						count++;
+					}
+					$("#nodata").hide();
+					$('table').append(html);
+				},
+				error: function(data) {
+					$("#nodata").show();
+				}
+			})
+		})
+	</script>
+
+</html>

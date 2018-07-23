@@ -1,0 +1,15 @@
+/*CSS reset*/
+html{background:white;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,
+pre,code,form,fieldset,legend,input,button,
+textarea,p,blockquote,th,td {
+    margin:0;padding:0;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+}
+ul,ol {
+    list-style:none;
+}
